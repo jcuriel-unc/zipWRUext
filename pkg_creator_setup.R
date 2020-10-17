@@ -20,16 +20,15 @@ document()
 
 setwd(parentDirectory)
 install("zipWRUext2")
-library(zipWRUext2)
-?zip_all_census2
-?zip_wru
-?wi_data
-wi_data <- zipWRUext::wi_data
-wi_data4 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+
 ###testing how to install pkgs from github 
 
 devtools::install_github("https://github.com/jcuriel-unc/zipWRUext", subdir="zipWRUext2")
 
-devtools::install_github("https://github.mit.edu/MEDSL/zipWRUext")
 
-
+library(zipWRUext2)
+?zip_all_census2
+?zip_wru
+?wi_data
+wi_data <- zipWRUext2::wi_data
+wi_data4 <- zipWRUext2::zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")

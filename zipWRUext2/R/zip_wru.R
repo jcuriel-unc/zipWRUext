@@ -27,7 +27,7 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   eth <- c("whi", "bla", "his", "asi", "oth")
   final_dataframe <- data.frame(stringsAsFactors = FALSE)
   data("zip_all_census2", envir=environment())
-  all_zip_census2 <- zipWRUext::zip_all_census2
+  all_zip_census2 <- zipWRUext2::zip_all_census2
   #all_zip_census <- readRDS(paste0("data/cleaned",sep="/","master_zcta_bisg_data.rds"))
   all_zip_census2 <- subset(all_zip_census2,state_name==state & type==type1 & year==year1 )
   ###get zip code field 
