@@ -15,8 +15,8 @@
 #' 
 #' @export
 #' @examples 
-#' wi_data <- wi_data <- zipWRUext::wi_data
-#' wi_data2 <- zip_bisg(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+#' wi_data <- wi_data <- zipWRUext2::wi_data
+#' wi_data2 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
 #' 
 
 
@@ -38,6 +38,7 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   ###get surname field 
   surname_num <- which(colnames(dataframe1)==surname_field)
   colnames(dataframe1)[surname_num] <- "surname"
+  surnames2010 <- wru::surnames2010
   ####now getting the loop running 
   tryCatch({
     for(i in 1:length(zip_vec)){
