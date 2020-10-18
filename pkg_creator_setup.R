@@ -27,9 +27,10 @@ devtools::install_github("https://github.com/jcuriel-unc/zipWRUext", subdir="zip
 
 
 library(zipWRUext2)
+library(wru)
 ?zip_all_census2
 ?zip_wru
 ?wi_data
 wi_data <- zipWRUext2::wi_data
-wi_data4 <- zipWRUext2::zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_data4 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
 sum(wi_data4$pred.whi)/nrow(wi_data4)

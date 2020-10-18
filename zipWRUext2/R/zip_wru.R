@@ -75,16 +75,14 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
         dataframe2[paste("pred", eth[k], sep = ".")] <- dataframe2[paste("q", 
                                                                          eth[k], sep = "_")]
       }
-      start_col <- ncol(final_dataframe)-5
-      dataframe2 <- dataframe2[,c(1:ncol(dataframe1),start_col:ncol(dataframe2))]
       if(is.null(final_dataframe)){
         final_dataframe <- dataframe2
       }else{
-        final_dataframe <- rbind(final_dataframe,dataframe2) 
+        final_dataframe <- gtools::smartbind(final_dataframe,dataframe2) 
       }
     }
-    #start_col <- ncol(final_dataframe)-5
-    #final_dataframe <- final_dataframe[,c(1:ncol(dataframe1),start_col:ncol(final_dataframe) )]
+    start_col <- ncol(final_dataframe)-5
+    final_dataframe <- final_dataframe[,c(1:ncol(dataframe1),start_col:ncol(final_dataframe) )]
     
   },error=function(e){cat("ERROR :",conditionMessage(e), "\n")} )
   return(final_dataframe)
