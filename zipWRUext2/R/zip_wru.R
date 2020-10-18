@@ -26,7 +26,7 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   if(length(new.packages)) install.packages(new.packages)
   eth <- c("whi", "bla", "his", "asi", "oth")
   final_dataframe <- data.frame(stringsAsFactors = FALSE)
-  data("zip_all_census2", envir=environment())
+  #data("zip_all_census2", envir=environment())
   all_zip_census2 <- zipWRUext2::zip_all_census2
   #all_zip_census <- readRDS(paste0("data/cleaned",sep="/","master_zcta_bisg_data.rds"))
   all_zip_census2 <- subset(all_zip_census2,state_name==state & type==type1 & year==year1 )
@@ -75,14 +75,16 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
         dataframe2[paste("pred", eth[k], sep = ".")] <- dataframe2[paste("q", 
                                                                          eth[k], sep = "_")]
       }
+      start_col <- ncol(final_dataframe)-5
+      dataframe2 <- dataframe2[,c(1:ncol(dataframe1),start_col:ncol(dataframe2))]
       if(is.null(final_dataframe)){
         final_dataframe <- dataframe2
       }else{
-        final_dataframe <- gtools::smartbind(final_dataframe,dataframe2) 
+        final_dataframe <- rbind(final_dataframe,dataframe2) 
       }
     }
-    start_col <- ncol(final_dataframe)-5
-    final_dataframe <- final_dataframe[,c(1:ncol(dataframe1),start_col:ncol(final_dataframe) )]
+    #start_col <- ncol(final_dataframe)-5
+    #final_dataframe <- final_dataframe[,c(1:ncol(dataframe1),start_col:ncol(final_dataframe) )]
     
   },error=function(e){cat("ERROR :",conditionMessage(e), "\n")} )
   return(final_dataframe)
