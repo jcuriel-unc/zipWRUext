@@ -24,6 +24,7 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   list.of.packages <- c("wru","gtools")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages)
+  library(wru)
   eth <- c("whi", "bla", "his", "asi", "oth")
   final_dataframe <- data.frame(stringsAsFactors = FALSE)
   #data("zip_all_census2", envir=environment())
