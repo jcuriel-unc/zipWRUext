@@ -32,5 +32,11 @@ library(wru)
 ?zip_wru
 ?wi_data
 wi_data <- zipWRUext2::wi_data
-wi_data4 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_data4 <- zip_wru2(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_abs_data2 <- zip_wru2(wi_abs_data, state="WISCONSIN", type1="acs", year1="2018", zip_col="zipcode2", surname_field = "lastname")
+
 sum(wi_data4$pred.whi)/nrow(wi_data4)
+
+
+
+
