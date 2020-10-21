@@ -11,13 +11,10 @@ The primary command to conduct this ZIP code level BISG is zip_wru(). All the us
 (i.e. ``WISCONSIN", ``NORTH CAROLINA", etc.), type of data (``census" or ``acs"), year of data (``2010" for census, ``2011" to ``2018" for ACS), name of the zip code 
 column name within the data (i.e. ``zipcode"), and surname field (i.e. ``surname", ``lastname", ``last_name", etc.). 
 
-Note that the zip_wru works for a given selected state. Therefore, issues can arise if a ZIP code within the voterfile is of a different state. The internal ZIP code master file
-allows for the identification of even split ZIP codes' specific demographics to be known for each separate state, so this is not a problem. The issue is that the loop increases
-efficiency by looping through all of the unique zip codes after first creating a unique sorted vector of ZIP codes to loop through. Therefore, if a ZIP code appears first and is 
-out of state, then it can lead to an error. 
-
-Additionally, please ensure that the zip code field is character, padded, and no more than five digits long. Warnings will be added in future versions, but numeric ZIP codes 
+Please ensure that the zip code field is character, padded, and no more than five digits long. Warnings will be added in future versions, but numeric ZIP codes 
 are especially problematic for states with leading zeroes. Further, nine digit ZIP codes refer to points, not polygons, so these should be subsetted to the first five digits. 
+
+Update 10/21/2020: The internal loop present within the old zip_wru function has been removed. The speed is now 16 times quicker, and out of state ZIP codes no longer cause the function to report an error. 
 
 In order to test the data, please be sure to make  use of the wi_data, which is part of the package. 
 
