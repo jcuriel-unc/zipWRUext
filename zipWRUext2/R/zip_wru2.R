@@ -34,8 +34,8 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   ###get zip code field 
   zip_num <- which(colnames(dataframe1)==zip_col)
   colnames(dataframe1)[zip_num] <- "zcta5"
-  zip_vec <- dataframe1[,zip_num]
-  zip_vec <- sort(unique(zip_vec))
+  #zip_vec <- dataframe1[,zip_num]
+  #zip_vec <- sort(unique(zip_vec))
   ###get surname field 
   surname_num <- which(colnames(dataframe1)==surname_field)
   colnames(dataframe1)[surname_num] <- "surname"

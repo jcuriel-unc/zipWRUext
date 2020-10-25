@@ -31,10 +31,21 @@ library(wru)
 ?zip_all_census2
 ?zip_wru
 ?wi_data
-wi_data <- zipWRUext2::wi_data
-wi_data4 <- zip_wru2(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
-wi_abs_data2 <- zip_wru2(wi_abs_data, state="WISCONSIN", type1="acs", year1="2018", zip_col="zipcode2", surname_field = "lastname")
+if(any(colnames(wi_data4)=="pred.whi2")==T){
+  print("Present")
+}else{
+  print("Not present")
+}
+predNames <- c("pred.whi","pred.bla","pred.his","pred.asi","pred.oth")
 
+colnamus1 <- which(colnames(wi_data4)==predNames)
+rowSums(wi_data4[,colnamus1])
+
+wi_data <- zipWRUext2::wi_data
+wi_data4 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_data4<- race_herfindahl_scores(wi_data4)
+head(wi_data4[,26:28])
+View(wi_data4)
 sum(wi_data4$pred.whi)/nrow(wi_data4)
 
 
