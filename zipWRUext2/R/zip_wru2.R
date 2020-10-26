@@ -30,7 +30,7 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   #data("zip_all_census2", envir=environment())
   all_zip_census2 <- zipWRUext2::zip_all_census2
   ###check to make sure data is right 
-  if(year1=="2010" & type1!="acs" ){
+  if(year1=="2010" & type1=="acs" ){
     stop("Data from 2010 is being called, but that requires census data.")
   }else if(year1!="2010" & type1=="census"){
     stop("Data after 2010 is being called, but that requires acs, not census data, type.")
