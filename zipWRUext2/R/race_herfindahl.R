@@ -27,11 +27,14 @@ race_herfindahl_scores <- function(dataframe1){
     stop("Predicted race variable not present.")
   }
   predNames <- c("pred.whi","pred.bla","pred.his","pred.asi","pred.oth")
-  pred_col_nums <- which(colnames(dataframe1)==predNames)
-  dataframe1$herf_weight <- (dataframe1[,predNames[1] ]^2)+(dataframe1[,predNames[2] ]^2)+(dataframe1[,predNames[3] ]^2)+
-    (dataframe1[,predNames[4] ]^2) +(dataframe1[,predNames[5] ]^2)
-  ##### now onto get plurality race 
-  prob_matrix <- as.matrix(dataframe1[,pred_col_nums])
+  #pred_col_nums <- which(colnames(dataframe1)==predNames)
+  #dataframe1$herf_weight <- (dataframe1[,predNames[1] ]^2)+(dataframe1[,predNames[2] ]^2)+(dataframe1[,predNames[3] ]^2)+
+  #  (dataframe1[,predNames[4] ]^2) +(dataframe1[,predNames[5] ]^2)
+  dataframe1$herf_weight <- (dataframe1$pred.whi)^2 + (dataframe1$pred.bla)^2 + (dataframe1$pred.his)^2 + (dataframe1$pred.asi)^2 +
+    (dataframe1$pred.oth)^2
+   ##### now onto get plurality race 
+  dataframe_sub <- subset(dataframe1, select=c(pred.whi,pred.bla,pred.his,pred.asi,pred.oth))
+  prob_matrix <- as.matrix(dataframe_sub)
   prob_matrix2 <- apply(prob_matrix,1,max)
   dataframe1 <- cbind(dataframe1,prob_matrix2)
   colnames(dataframe1)[colnames(dataframe1)=="prob_matrix2"] <- "max_race_prob"

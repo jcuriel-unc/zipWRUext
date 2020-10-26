@@ -29,6 +29,13 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   final_dataframe <- data.frame(stringsAsFactors = FALSE)
   #data("zip_all_census2", envir=environment())
   all_zip_census2 <- zipWRUext2::zip_all_census2
+  ###check to make sure data is right 
+  if(year1=="2010" & type1!="acs" ){
+    stop("Data from 2010 is being called, but that requires census data.")
+  }else if(year1!="2010" & type1=="census"){
+    stop("Data after 2010 is being called, but that requires acs, not census data, type.")
+  }
+  
   #all_zip_census <- readRDS(paste0("data/cleaned",sep="/","master_zcta_bisg_data.rds"))
   all_zip_census2 <- subset(all_zip_census2,state_name==state & type==type1 & year==year1 )
   ###get zip code field 
