@@ -23,11 +23,11 @@
 #' 
 
 race_herfindahl_scores <- function(dataframe1){
-  if(any(colnames(wi_data4)=="pred.whi")==FALSE){
+  if(any(colnames(dataframe1)=="pred.whi")==FALSE){
     stop("Predicted race variable not present.")
   }
   predNames <- c("pred.whi","pred.bla","pred.his","pred.asi","pred.oth")
-  pred_col_nums <- which(colnames(wi_data4)==predNames)
+  pred_col_nums <- which(colnames(dataframe1)==predNames)
   dataframe1$herf_weight <- (dataframe1[,predNames[1] ]^2)+(dataframe1[,predNames[2] ]^2)+(dataframe1[,predNames[3] ]^2)+
     (dataframe1[,predNames[4] ]^2) +(dataframe1[,predNames[5] ]^2)
   ##### now onto get plurality race 
