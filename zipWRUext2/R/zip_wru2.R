@@ -76,6 +76,8 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
     }
     start_col <- ncol(dataframe2)-5
     final_dataframe <- dataframe2[,c(1:ncol(dataframe1),start_col:ncol(dataframe2) )]
+    final_dataframe <- final_dataframe[,-grep("p_", colnames(final_dataframe))]
+    final_dataframe <- final_dataframe[,-grep("u_", colnames(final_dataframe))]
 
   return(final_dataframe)
 }
