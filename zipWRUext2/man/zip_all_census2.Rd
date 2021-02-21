@@ -26,7 +26,8 @@ A data frame with 297,351 rows and 16 variables:
 }
 }
 \source{
-\url{https://www.socialexplorer.com/tables}
+U.S. Census Bureau. (2011--2018). 2011-2018 American Community Survey (ACS) 5-year Detailed ZCTA Level Data. Geographic Level 860,
+Tables: B01001C -- B01001I. Public Use Microdata Samples \link{JSON Data file}.  Retrieved from (see sources_dataframe for links).
 }
 \usage{
 zip_all_census2

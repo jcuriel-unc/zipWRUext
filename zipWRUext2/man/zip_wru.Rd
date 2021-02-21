@@ -18,8 +18,6 @@ zip_wru(
 
 \item{state}{The state name for the voter file, in all upper case letters}
 
-\item{type1}{The type of the data to use for BISG. Can be either census or acs}
-
 \item{year1}{The year for the data to use for the demographic population data. If 2010, then type1 must be equal to census. Spans 2010 - 2018}
 
 \item{zip_col}{The column name for the five digit zip code field within the dataframe. Defaults to zcta5}
@@ -36,7 +34,7 @@ This function takes voter file data set up for wru and performs BISG at teh ZIP 
 data, as acquired from Social Explorer.
 }
 \examples{
-wi_data <- wi_data <- zipWRUext2::wi_data
+wi_data <-  zipWRUext2::wi_data
 wi_data2 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
 
 }

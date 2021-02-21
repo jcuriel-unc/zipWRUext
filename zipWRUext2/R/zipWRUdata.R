@@ -23,6 +23,7 @@
 #'   \item{year}{The year for the data. The Census data is from 2010, and the acs data runs from 2011 to 2018.}
 #'   \item{state_po}{The state postal code.}
 #' }
-#' @source \url{https://www.socialexplorer.com/tables}
+#' @source U.S. Census Bureau. (2011--2018). 2011-2018 American Community Survey (ACS) 5-year Detailed ZCTA Level Data. Geographic Level 860,
+#' Tables: B01001C -- B01001I. Public Use Microdata Samples [JSON Data file].  Retrieved from (see sources_dataframe for links).
 
 "zip_all_census2"
