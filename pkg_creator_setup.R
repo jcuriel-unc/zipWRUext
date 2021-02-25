@@ -43,13 +43,10 @@ colnamus1 <- which(colnames(wi_data4)==predNames)
 rowSums(wi_data4[,colnamus1])
 
 wi_data <- zipWRUext2::wi_data
-wi_data4 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_data4 <- zip_wru(wi_data, state="WISCONSIN",  year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_data4<- race_herfindahl_scores(wi_data4)
+
 head(wi_data4)
-wi_data3 <- wi_data4
-
-wi_data3<- race_herfindahl_scores(wi_data3)
-
-head(wi_data4[,26:28])
 View(wi_data3)
 sum(wi_data4$pred.whi)/nrow(wi_data4)
 
