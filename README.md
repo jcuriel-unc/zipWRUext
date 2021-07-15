@@ -1,6 +1,15 @@
 # zipWRUext2
 A ZIP code extension for the WRU R package
 
+________________________________________________________________________________________________________________________________
+
+
+NOTE: Efforts pending to host on CRAN. In meantime, please install with the devtools pkg, with the following command: 
+
+devtools::install_github("https://github.com/jcuriel-unc/zipWRUext", subdir="zipWRUext2")
+
+________________________________________________________________________________________________________________________________
+
 This package acts as an extension to the WRU package by Imai and Khanna (2016) in performing Bayesian Inference with Surname and Geography (BISG). The package does this 
 by drawing upon ZIP code Tabulation Area (ZCTA) tabulated demographics from the US 2010 Census and American Community Survey (ACS) from 2011 -- 2018. This information is stored 
 in the package as an internal data frame for the package, ``zip_all_census2", which has the relevant populations and demographics for each ZIP code by state. Importantly, 
