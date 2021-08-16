@@ -1,7 +1,7 @@
 #' BISG with ZIP codes
 #' 
-#' This function takes voter file data set up for wru and performs BISG at teh ZIP code level, incorporating Census 2010 or ACS 2011 - 2018
-#' data, as acquired from Social Explorer. 
+#' This function takes voter file data set up for wru and performs BISG at the ZIP code level, incorporating Census 2010 or ACS 2011 - 2018
+#' data, as acquired from the Census API (see sources dataframe)
 #' 
 #' @param dataframe1 The data frame for the voter file. 
 #' @param state The state name for the voter file, in all upper case letters  
@@ -15,7 +15,7 @@
 #' @export
 #' @examples 
 #' wi_data <-  zipWRUext2::wi_data
-#' wi_data2 <- zip_wru(wi_data, state="WISCONSIN", type1="census", year1="2010", zip_col="zcta5", surname_field = "lastname")
+#' wi_data2 <- zip_wru(wi_data, state="WISCONSIN",  year1="2010", zip_col="zcta5", surname_field = "lastname")
 #' 
 
 

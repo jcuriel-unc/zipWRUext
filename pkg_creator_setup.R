@@ -4,23 +4,46 @@ library("roxygen2")
 library(usethis)
 parentDirectory <- dirname(rstudioapi::getActiveDocumentContext()$path)
 setwd(parentDirectory)
-create("zipWRUext2")
+#create("zipWRUext2")
 setwd("zipWRUext2")
-###proceed to create data 
+###proceed to create data in the raw folder
 usethis::use_data_raw(name = 'all_zip_census2')
 usethis::use_data_raw(name = 'wi_voterfile_sample')
 usethis::use_data_raw(name = 'sources_dataframe')
+usethis::use_data_raw(name = 'ga_sample_blocks')
+usethis::use_data_raw(name = 'ga_sample_vf')
 
+## read in the raw data 
+
+ga_sample_blocks <- readRDS("data-raw/ga_sample_blocks.rds")
+ga_sample_vf <- readRDS("data-raw/ga_sample_vf.rds")
+## save to the data folder 
+save(ga_sample_blocks, file = "data/ga_sample_blocks.rda")
+save(ga_sample_vf, file = "data/ga_sample_vf.rda")
+
+## These create empty files to be filled with user entered data 
 file.create("R/wivoterfile.R")
 file.create("R/zipWRUdata.R")
+file.create("R/ga_sample_blocks.R")
+file.create("R/ga_sample_vf.R")
+
+
+# Create skelton if title, description, import, etc. 
 sinew::makeOxygen(zip_all_census2)
 sinew::makeOxygen(wi_data)
-
+sinew::makeOxygen(ga_sample_blocks) # these simply allow one to copy and paste; not really needed 
 
 document()
 
 setwd(parentDirectory)
 install("zipWRUext2")
+library(zipWRUext2)
+
+
+?predict_race_any
+ga_data <-  zipWRUext2::ga_sample_vf
+ga_block_sample <- zipWRUext2::ga_sample_blocks
+ga_data2 <- predict_race_any(ga_data, ga_block_sample,  c("county","tract","block"))
 
 ###testing how to install pkgs from github 
 
