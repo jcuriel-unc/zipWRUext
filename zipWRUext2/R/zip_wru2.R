@@ -47,7 +47,7 @@ zip_wru <- function(dataframe1, state, type1="census", year1="2010", zip_col="zc
   colnames(dataframe1)[surname_num] <- "surname"
   surnames2010 <- wru::surnames2010
   tryCatch({
-    dataframe1 <-wru::merge_surnames(dataframe1)
+    dataframe1 <-merge_surnames(dataframe1)
   },error=function(e){cat("ERROR :",conditionMessage(e), "\n")} )
   dataframe2 <- merge(dataframe1,all_zip_census2,BY="zcta5" )
   if(nrow(dataframe2)<nrow(dataframe1)){

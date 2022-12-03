@@ -4,10 +4,15 @@
 \alias{race_herfindahl_scores}
 \title{Race Confidence Scorer}
 \usage{
-race_herfindahl_scores(dataframe1)
+race_herfindahl_scores(
+  dataframe1,
+  predNames = c("pred.whi", "pred.bla", "pred.his", "pred.asi", "pred.oth")
+)
 }
 \arguments{
 \item{dataframe1}{The data frame with the predicted race fields}
+
+\item{predNames}{The vector of five estimated race fields from the zip_wru cmd. Defaults to pred.eth, e.g. pred.whi.}
 }
 \value{
 A dataframe with the herfindahl scores to measure certainty of individual estimate, highest race estimate, and plurality race.
