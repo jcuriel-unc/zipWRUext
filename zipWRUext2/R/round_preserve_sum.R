@@ -9,9 +9,6 @@
 #' 
 #' @export
 #' @examples 
-#' ga_data <-  zipWRUext2::ga_sample_vf
-#' ga_block_sample <- zipWRUext2::ga_sample_blocks
-#' ga_data2 <- predict_race_any(ga_data, ga_block_sample,  c("county","tract","block"))
 #' 
 
 round_preserve_sum <- function(x, digits = 0) {

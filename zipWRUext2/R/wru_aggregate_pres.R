@@ -2,6 +2,7 @@
 #' 
 #' This function aggregates by the user specified grouping varaible for the weighted probabilities of the racial categories, while also 
 #' ensuring that the rounded estimates adhere to the total number. 
+#' 
 #' @param df The data frame for the voter file. 
 #' @param geo_df The grouping variable to collapse by; have in quotes to be read in as a string.    
 #' @param predNames The predicted prob columns that the bisg predict commands estimated. Defaults to pred.eth, e.g. pred.whi  
