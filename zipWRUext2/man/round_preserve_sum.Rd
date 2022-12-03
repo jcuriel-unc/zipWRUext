@@ -14,7 +14,6 @@ round_preserve_sum(x, digits = 0)
 \value{
 A vector that rounds numbers while preserving the total.
 }
-}
 \description{
 This function rounds numbers in a vector to the specified num of digits, while ensuring it remains equal to total.
 }

@@ -17,7 +17,6 @@ predict_race_any(df, geo_df, vec_merge)
 \value{
 A dataframe with pred.eth values of the predicted probability for a given race. These rowsum to 1.
 }
-}
 \description{
 This function predicts race via BISG with user provided data, and makes use of the merge_bisg_geo command to do so.
 }

@@ -17,7 +17,6 @@ merge_bisg_geo(df, geo_df, vec_merge)
 \value{
 A dataframe with the merged voterfile and geographic demographic data necessary to run BISG via predict_race_any
 }
-}
 \description{
 This function merges on user provided demographic data with geographic codes, and is incorporated into the predict_race_any cmd
 }
