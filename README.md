@@ -11,7 +11,7 @@ devtools::install_github("https://github.com/jcuriel-unc/zipWRUext", subdir="zip
 ________________________________________________________________________________________________________________________________
 
 This package acts as an extension to the WRU package by Imai and Khanna (2016) in performing Bayesian Inference with Surname and Geography (BISG). The package does this 
-by drawing upon ZIP code Tabulation Area (ZCTA) tabulated demographics from the US 2010 Census and American Community Survey (ACS) from 2011 -- 2018. This information is stored 
+by drawing upon ZIP code Tabulation Area (ZCTA) -- or other user provided data -- tabulated demographics from the US 2010 Census and American Community Survey (ACS) from 2011 -- 2018. This information is stored 
 in the package as an internal data frame for the package, ``zip_all_census2", which has the relevant populations and demographics for each ZIP code by state. Importantly, 
 the r_whi, r_bla, r_his, r_asi, and r_oth contain the probabilities that a voter lives in a ZCTA if they are of a given race, i.e. pr(race | ZCTA). These in combination with the
 surname2010 dictionary provided by wru can in turn be used to identify the joint probabilities that an individual is of a given race. 
