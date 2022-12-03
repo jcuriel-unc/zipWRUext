@@ -67,12 +67,17 @@ rowSums(wi_data4[,colnamus1])
 
 wi_data <- zipWRUext2::wi_data
 wi_data4 <- zip_wru(wi_data, state="WISCONSIN",  year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_data4col <- wru_aggregate_pres(wi_data4, group_var = "zcta5")
+head(wi_data4col)
+## test out the new cmd 
+
+  
+
 wi_data4<- race_herfindahl_scores(wi_data4)
+wi_data4col <- wru_aggregate_pres(wi_data4, group_var = "zcta5")
 
 head(wi_data4)
 View(wi_data3)
 sum(wi_data4$pred.whi)/nrow(wi_data4)
-
-
 
 
