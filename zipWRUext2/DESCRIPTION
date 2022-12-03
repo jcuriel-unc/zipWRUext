@@ -1,5 +1,5 @@
 Package: zipWRUext2
-Title: What the Package Does (One Line, Title Case)
+Title: ZIP code extension package for Bayesian Improved Surname Geocoding of race
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "John",
@@ -7,8 +7,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "jcuriel.unc@gmail.com",
            comment = c(ORCID = "0000-0002-4399-8582"))
-Description: This package acts as an extension to the WRU package by Imai and Khanna (2016) in performing Bayesian Inference with Surname and Geography (BISG). The package does this 
-by drawing upon ZIP code Tabulation Area (ZCTA) -- or other user provided data -- tabulated demographics from the US 2010 Census and American Community Survey (ACS) from 2011 -- 2018. The two primary commands are zip_wru as the base command that reads in ZIP code demographics, or predict_race_any, which allows for user cleaned data for the part of the geographic information.
+Description: This package acts as an extension to the WRU package by Imai and Khanna (2016) 	in performing Bayesian Inference with Surname and Geography (BISG). The package 	does this 
+	by drawing upon ZIP code Tabulation Area (ZCTA) -- or other user provided data -- 	tabulated demographics from the US 2010 Census and American Community Survey (ACS) 	from 2011 -- 2018. The two primary commands are zip_wru as the base command that 	reads in ZIP code demographics, or predict_race_any, which allows for user cleaned 	data for the part of the geographic information.
 License: `use_mit_license()`
 Encoding: UTF-8
 LazyData: true
