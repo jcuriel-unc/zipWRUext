@@ -28,7 +28,7 @@ must all be uppercase, and if not already, the column will be renamed to surname
 \value{
 A dataframe with the pred.race fields for the probability that an individual is of a given race. These sum to 1.
 }
-}
+
 \description{
 This function takes voter file data set up for wru and performs BISG at the ZIP code level, incorporating Census 2010 or ACS 2011 - 2018
 data, as acquired from the Census API (see sources dataframe)

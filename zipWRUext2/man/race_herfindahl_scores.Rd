@@ -17,7 +17,7 @@ race_herfindahl_scores(
 \value{
 A dataframe with the herfindahl scores to measure certainty of individual estimate, highest race estimate, and plurality race.
 }
-}
+
 \description{
 This function takes the predicted race scores, finds the plurality race, then finds the degree of confidence that the user can have in race via
 the herfindahl index.
