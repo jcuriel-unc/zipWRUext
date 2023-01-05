@@ -23,6 +23,7 @@ merge_surnames(
 \value{
 A dataframe with pred.eth values of the predicted probability for a given race. These rowsum to 1.
 }
+}
 \description{
 This function is grandfathered in from a previous version of	Kabir Khanna and Kosuke Imai's wru package from 2021; necessary to
 operate the predict_race_any and zip_wru commands.
