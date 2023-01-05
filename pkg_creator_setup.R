@@ -55,6 +55,13 @@ library(wru)
 ?zip_all_census2
 ?zip_wru
 ?wi_data
+## test tutorial script 
+wi_data <-  zipWRUext2::wi_data
+wi_data2 <- zip_wru(wi_data, state="WISCONSIN",  year1="2010", zip_col="zcta5", surname_field = "lastname")
+wi_data2_cis <- wru_cis(wi_data2, group_var = "zcta5")
+
+
+
 if(any(colnames(wi_data4)=="pred.whi2")==T){
   print("Present")
 }else{

@@ -20,6 +20,10 @@
 wru_cis <- function(df,group_var="zcta5",predNames = c("pred.whi", 
                                                        "pred.bla", "pred.his", "pred.asi", "pred.oth"),
                     ci_vec=c(0.025,0.5,0.975)){
+  list.of.packages <- c("tidyverse")
+  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+  if(length(new.packages)) install.packages(new.packages)
+  library(tidyverse)
   colnames(df)[colnames(df) == group_var] <- "group_n"
   ## collapse the data by the grouping var and sum for the pred name vec
   df_col <- df %>% group_by(group_n) %>% select(all_of(predNames)) %>% 
@@ -62,6 +66,7 @@ wru_cis <- function(df,group_var="zcta5",predNames = c("pred.whi",
   colnames(test_oth_ci) <- paste0("pred.oth",sep="_",colnames(test_oth_ci))
   ### now I should be ready to merge these 
   df_col <- cbind(df_col,test_whi_ci,test_bla_ci,test_his_ci,test_asi_ci,test_oth_ci)
+  colnames(df_col)[colnames(df_col)=="group_n"] <- group_var
   ### return the df 
   return(df_col)
 }
