@@ -54,6 +54,7 @@ library(zipWRUext2)
 library(wru)
 ?zip_all_census2
 ?zip_wru
+?wru_cis
 ?wi_data
 ## test tutorial script 
 wi_data <-  zipWRUext2::wi_data

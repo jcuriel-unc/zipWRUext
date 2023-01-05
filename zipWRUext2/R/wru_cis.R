@@ -38,11 +38,11 @@ wru_cis <- function(df,group_var="zcta5",predNames = c("pred.whi",
   ## now get the random sample 
   output_rmnom <- apply(df_col, 1, function(x) rmultinom(x[samp_size_col], x[pop_col], x[pred_name_cols]))
   ### now slice by race 
-  df.whi <-  normalize[seq(1, nrow(normalize), 5), ]
-  df.bla <- normalize[seq(2, nrow(normalize), 5), ]
-  df.his <- normalize[seq(3, nrow(normalize), 5), ]
-  df.asi <- normalize[seq(4, nrow(normalize), 5), ]
-  df.oth <- normalize[seq(5, nrow(normalize), 5), ]
+  df.whi <-  output_rmnom[seq(1, nrow(output_rmnom), 5), ]
+  df.bla <- output_rmnom[seq(2, nrow(output_rmnom), 5), ]
+  df.his <- output_rmnom[seq(3, nrow(output_rmnom), 5), ]
+  df.asi <- output_rmnom[seq(4, nrow(output_rmnom), 5), ]
+  df.oth <- output_rmnom[seq(5, nrow(output_rmnom), 5), ]
   ### now, get the confidence intervals 
   test_whi_ci <- apply(df.whi, 2, quantile, probs=ci_vec)
   test_whi_ci <- t(test_whi_ci) #good, seems to have worked 
