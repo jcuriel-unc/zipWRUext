@@ -4,6 +4,12 @@ library("roxygen2")
 library(usethis)
 parentDirectory <- dirname(rstudioapi::getActiveDocumentContext()$path)
 setwd(parentDirectory)
+### read in the zip code data from ACS 
+zip_acs2019 <- readRDS("zcta_acs2015_2019.rds")
+zip_acs2020 <- readRDS("zcta_acs2016_2020.rds")
+zip_acs2021 <- readRDS("zcta_acs2017_2021.rds")
+
+
 #create("zipWRUext2")
 setwd("zipWRUext2")
 ###proceed to create data in the raw folder
@@ -17,9 +23,19 @@ usethis::use_data_raw(name = 'ga_sample_vf')
 
 ga_sample_blocks <- readRDS("data-raw/ga_sample_blocks.rds")
 ga_sample_vf <- readRDS("data-raw/ga_sample_vf.rds")
+
+### new data for master zip file 
+master_zcta_df <- readRDS("data-raw/master_zcta_bisg_data.rds")
+### now combine 
+master_zcta_df <- rbind(master_zcta_df,zip_acs2019,zip_acs2020,zip_acs2021)
+
 ## save to the data folder 
 save(ga_sample_blocks, file = "data/ga_sample_blocks.rda")
 save(ga_sample_vf, file = "data/ga_sample_vf.rda")
+##saving new master data 
+save(master_zcta_df, file = "data/zip_all_census2.rda")
+
+
 
 ## These create empty files to be filled with user entered data 
 file.create("R/wivoterfile.R")
