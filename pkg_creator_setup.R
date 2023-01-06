@@ -28,12 +28,12 @@ ga_sample_vf <- readRDS("data-raw/ga_sample_vf.rds")
 master_zcta_df <- readRDS("data-raw/master_zcta_bisg_data.rds")
 ### now combine 
 master_zcta_df <- rbind(master_zcta_df,zip_acs2019,zip_acs2020,zip_acs2021)
-
+zip_all_census2 <- master_zcta_df
 ## save to the data folder 
 save(ga_sample_blocks, file = "data/ga_sample_blocks.rda")
 save(ga_sample_vf, file = "data/ga_sample_vf.rda")
 ##saving new master data 
-save(master_zcta_df, file = "data/zip_all_census2.rda")
+save(zip_all_census2, file = "data/zip_all_census2.rda")
 
 
 

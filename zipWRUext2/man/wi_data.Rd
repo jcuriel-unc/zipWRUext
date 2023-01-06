@@ -12,7 +12,6 @@ A data frame with 900 rows and 3 variables:
 \item{\code{zcta5}}{character the five digit zip code for the voter
 }
 }
-}
 \source{
 Wisconsin Election Commission 2020
 }

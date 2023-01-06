@@ -23,7 +23,7 @@ wru_cis(
 \value{
 A dataframe with the pred.race + confidence intervals \%s in the aggregated format.
 }
-
+}
 \description{
 This function takes the BISG dataframe output and computes confidence intervals for a given grouped level of geography
 }

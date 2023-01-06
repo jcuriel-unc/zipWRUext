@@ -20,7 +20,7 @@ wru_aggregate_pres(
 \value{
 A dataframe gropued by the user specified variable with whole numbers for a given racial category
 }
-
+}
 \description{
 This function aggregates by the user specified grouping varaible for the weighted probabilities of the racial categories, while also
 ensuring that the rounded estimates adhere to the total number.
