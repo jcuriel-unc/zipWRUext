@@ -76,7 +76,16 @@ The above figure presents the type of information that the user should report wh
 
 Finally, the user might want some explicit credibility intervals for the outputted data. Even if the user prefers estimates from a different BISG algorithm, the zipWRUext2 package contains the wru_cis command to find such credibility intervals.  All the user needs is a dataframe with the relevant pred.eth fields, and a geographic varaible by which to aggregate the data to. The following code is an example as applied to the WI data. 
 
-![Herfindahl](wi_herfindahl_density.png)
+![wru_cis](wru_wi_example.png)
+
+We see in the above section that the data aggregates to the field zcta5, with the predNames reflecting the default pred.eth fields outputted from the zip_wru command, and a vector of numeric confidence intervals, which defaults to the 95 percent confidence interval and median estimate. The wru_cis command makes use of the rmultinom command within R to simulate 1000 potential estimates for the number of people of a given race within the geographic unit of interest. The outputted dataframe below provides an illustration of the fields of interest. 
+
+![wru_cis](confidence_intervals.png)
+
+The pred.eth fields consist of the summed estimates to the geographic level of interest. The pred.eth_ fields that follow then reflect the number of at the various intervals of interest. For example, in the code above the low range estimate at the 2.5 percentile for whites is noted in the column pred.whi_2.5%, and upper range at pred.whi_97.5%. These can then be used when reporting the general certainty for geographies of interest. 
+
+## 
+
 
 
 
@@ -95,6 +104,8 @@ https://www.cambridge.org/core/journals/political-analysis/article/abs/validatin
 
 
 ## Version notes 
+
+Update 1/7/2023: The new confidence interval commands added. 
 
 Update 10/21/2020: The internal loop present within the old zip_wru function has been removed. The speed is now 16 times quicker, and out of state ZIP codes no longer cause the function to report an error. 
 
