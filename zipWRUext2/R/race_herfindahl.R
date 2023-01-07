@@ -27,7 +27,7 @@ race_herfindahl_scores <- function(dataframe1, predNames=c("pred.whi","pred.bla"
   list.of.packages <- c("tidyverse")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages)
-  library(wru)
+  library(tidyverse)
   if(any(colnames(dataframe1)==predNames[1])==FALSE){
     stop("Predicted race variable not present.")
   }
@@ -38,9 +38,15 @@ race_herfindahl_scores <- function(dataframe1, predNames=c("pred.whi","pred.bla"
   #pred_col_nums <- which(colnames(dataframe1)==predNames)
   #dataframe1$herf_weight <- (dataframe1[,predNames[1] ]^2)+(dataframe1[,predNames[2] ]^2)+(dataframe1[,predNames[3] ]^2)+
   #  (dataframe1[,predNames[4] ]^2) +(dataframe1[,predNames[5] ]^2)
-  dataframe1$herf_weight <- (dataframe1[predNames[1]])^2 + (dataframe1[predNames[2]])^2 + (dataframe1[predNames[3]])^2 +
-    (dataframe1[predNames[4]])^2 +
-    (dataframe1[predNames[5]])^2
+  ## get herfindahl weight 
+  temp_sub <- dataframe1[,predNames]
+  temp_sub$herf_weight <- apply(temp_sub,1,function(x) sum(x^2))
+  temp_sub <- subset(temp_sub, select=c(herf_weight))
+  ## combine 
+  dataframe1 <- cbind(dataframe1, temp_sub)
+  
+  ### now get the max estimate 
+
    ##### now onto get plurality race 
   dataframe_sub <- dataframe1 %>%
     select(all_of(predNames))
