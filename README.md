@@ -41,7 +41,37 @@ Also note that nine digit ZIP codes refer to points, not polygons, so these shou
 
 Beyond ZIP codes and standard Census geographies, there might be others that the user would like to provide. These might consist of precincts, wards, districts, Census Block Groups (CBGs), etc. These can be implemented with some basic cleaning and the predict_race_any command. 
 
-First, the user will need to have some type of geographic data with totals by the five racial categories of interest. All that the user will need to do 
+First, the user will need to have some type of geographic data with totals by the five racial categories of interest. All that the user will need to do is find the proportion of people of a given race that live within the geographic unit of interest. Below, we see a sample from the Georgia voter file. 
+
+![sample GA vf](ga_sample_vf.png)
+
+We see that the voter file includes ZIP Codes, but also the necessary information to conduct BISG at the CBG level. While neither the wru or zipWRUext2 package have built in block demographic data, all that the user needs to do is ensure that their voterfile information appears with the r_eth fields, noted below. 
+
+![GA CBGs](ga_block_example.png)
+
+The ga_sample_blocks, internal to the zipWRUext2 package, notes the total population for a given block, in addition to the number of people for a given race in the q_whi, q_bla, q_his, q_asi, and q_oth fields. These can then be used to create the r_eth fields of r_whi, r_bla, r_his, r_asi, and r_oth fields. These r_eth fields can be calculated by finding the total number of people for a given race within the sub-state geographic unit, divided by the total number of people of a given race within the state. Therefore, a given state's r_eth fields should all sum to 1 in order to ensure a proper geographic prior. 
+
+Once the user completes their own geographic demographic dataframe, the user can make use of the predict_race_any field, seen in the example below. 
+
+![predict_race_any](predict_race_any_ex.png)
+
+As seen in the code above, the user only needs to provide the dataframe that they are predicting upon (ga_sample_vf), the geographic prior dataframe with the r_eth fields (ga_sample_blocks), and the character vector of fields to merge onto (c("county","tract","block")). Therefore, the user needs simply make sure that the column names are the same across data sets, and the command will work without issue. The command will report an error message if the r_eth fields are not present, and a warning message if the geographic dataframe does not have r_eth fields that sum to one. 
+
+## Measuring uncertainty in estimates. 
+
+As a general note, the user should seek to avoid relying upon pluralistic/deterministic allocation of race, i.e. assigning an observation to a given race that they are most likely to be. DeLuca and Curiel (2022) discuss at length the issues that might arise. In the event that the user must assign races pluralistically, then the zipWRUext2 contains a couple of commands that can be of help in demonstrating uncertainty. 
+
+
+
+## References 
+
+DeLuca, Kevin, and John A. Curiel. ``Validating the Applicability of Bayesian Inference with Surname and Geocoding to Congressional Redistricting." Political Analysis, 2022, 1–7. doi:10.1017/pan.2022.14.
+
+https://www.cambridge.org/core/journals/political-analysis/article/abs/validating-the-applicability-of-bayesian-inference-with-surname-and-geocoding-to-congressional-redistricting/333B3BC8C85EA27E0F4FD2A245D44246 
+
+
+
+
 
 ## Version notes 
 
