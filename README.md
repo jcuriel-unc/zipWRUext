@@ -84,7 +84,9 @@ We see in the above section that the data aggregates to the field zcta5, with th
 
 The pred.eth fields consist of the summed estimates to the geographic level of interest. The pred.eth_ fields that follow then reflect the number of at the various intervals of interest. For example, in the code above the low range estimate at the 2.5 percentile for whites is noted in the column pred.whi_2.5%, and upper range at pred.whi_97.5%. These can then be used when reporting the general certainty for geographies of interest. 
 
-## 
+## Rounding probability weighted estimates 
+
+Finally, the user might desire the rounded estimates for the number of people per racial category. However, normal rounding might lead to a situation where the sum of the rounded estimates does not sum to the actual number of people within the data. Therefore, the user can make use of the wru_aggregate_pres(). All the user needs is a dataframe outputted from one of the wru commands with the pred.eth fields of interest. We see the command in action as applied to the sample WI data. 
 
 
 
