@@ -86,9 +86,11 @@ The pred.eth fields consist of the summed estimates to the geographic level of i
 
 ## Rounding probability weighted estimates 
 
-Finally, the user might desire the rounded estimates for the number of people per racial category. However, normal rounding might lead to a situation where the sum of the rounded estimates does not sum to the actual number of people within the data. Therefore, the user can make use of the wru_aggregate_pres(). All the user needs is a dataframe outputted from one of the wru commands with the pred.eth fields of interest. We see the command in action as applied to the sample WI data. 
+Finally, the user might desire the rounded estimates for the number of people per racial category. However, normal rounding might lead to a situation where the sum of the rounded estimates does not sum to the actual number of people within the data. Therefore, the user can make use of the wru_aggregate_pres(). All the user needs is a dataframe outputted from one of the wru commands with the pred.eth fields of interest. We see the command in action as applied to the sample WI data, as seen below. 
 
+![wru_preserve](wru_preserve.png)
 
+The command takes the zip_wru output, the aggregates the estimates (not assigned pluralistically) to the geographic level of interest. Next, the command applies the internal function -- round_preserve_sum -- to the data, which both rounds the estimates while ensuring that the rounded data adheres to the total population within the dataframe before transformation. Therefore, while there might be rounding error, such estimates avoid the bad practice of pluralistic assignment as noted by DeLuca and Curiel. 
 
 
 
