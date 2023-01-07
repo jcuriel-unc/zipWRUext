@@ -61,6 +61,27 @@ As seen in the code above, the user only needs to provide the dataframe that the
 
 As a general note, the user should seek to avoid relying upon pluralistic/deterministic allocation of race, i.e. assigning an observation to a given race that they are most likely to be. DeLuca and Curiel (2022) discuss at length the issues that might arise. In the event that the user must assign races pluralistically, then the zipWRUext2 contains a couple of commands that can be of help in demonstrating uncertainty. 
 
+The first thing that the user can do is calculate the Herfindahl index of races for a given observation. The Herfindahl index sums the squared observations, such that the closer a value is to 1, the greater certainty that an observation belongs to one category. As values approximate 0, the more diverse the potential races an observation might be part of. The inverse of the Herfindahl index amounts to the effective number
+
+With the zipWRUext2 package, the command race_herfindahl_scores() can be used for this purpose. All that the user needs to provide is a dataframe outputted by a BISG command (i.e. zip_wru or predict_race_any) and the names of the relevant pred.eth fields in the event that the user changed these. 
+
+![Herfindahl](herf_weight_output.png)
+
+The above figure presents an example using the internal WI dataframe. The new fields of interest are herf_weight, max_race_prob, and plural_race. The herf_weight consists of the Herfindahl score, which ranges from 0 - 1 as discussed above. The max_race_prob reports the highest value across the pred.eth fields. Finally, the plural race reports the race for which the maximum racial estimate is part of. The user can then take the inverse of the herf_weight value to find and report the distribution of the effective number of races, as seen below. 
+
+
+![Herfindahl](wi_herfindahl_density.png)
+
+The above figure presents the type of information that the user should report when demonstrating the degree of confidence across observations. With the effective number of races on the x-axis, we see the distribution of certainty in the BISG estimates. We see that while there are some outlier estimates, the vast majority of estimates within the data are centered about 1, thereby demonstrating a higher degree of confidence in the estimates. 
+
+Finally, the user might want some explicit credibility intervals for the outputted data. Even if the user prefers estimates from a different BISG algorithm, the zipWRUext2 package contains the wru_cis command to find such credibility intervals.  All the user needs is a dataframe with the relevant pred.eth fields, and a geographic varaible by which to aggregate the data to. The following code is an example as applied to the WI data. 
+
+![Herfindahl](wi_herfindahl_density.png)
+
+
+
+
+
 
 
 ## References 
